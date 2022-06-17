@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gFI-rf-LGT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="abf-hd-PCv">
+            <objects>
+                <viewController id="gFI-rf-LGT" customClass="ViewController" customModule="CircleProgressBar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U1N-6J-eaq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWw-Rk-KBF" customClass="CircleProgressBar" customModule="CircleProgressBar" customModuleProvider="target">
+                                <rect key="frame" x="93" y="369" width="212" height="198"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TWw-Rk-KBF" secondAttribute="height" multiplier="1:1" constant="14" id="6K7-hI-2ca"/>
+                                    <constraint firstAttribute="height" constant="198" id="at6-JQ-5mW"/>
+                                </constraints>
+                            </view>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="600" stepValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="VEW-8g-fnn">
+                                <rect key="frame" x="160" y="613" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepper:" destination="gFI-rf-LGT" eventType="valueChanged" id="ej7-pJ-eUP"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx2-4g-9Hi">
+                                <rect key="frame" x="186.5" y="288" width="41.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="80b-br-bhW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="80b-br-bhW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qx2-4g-9Hi" secondAttribute="trailing" id="610-OL-WJo"/>
+                            <constraint firstItem="qx2-4g-9Hi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="80b-br-bhW" secondAttribute="leading" id="7m7-WS-Jlb"/>
+                            <constraint firstItem="VEW-8g-fnn" firstAttribute="top" secondItem="TWw-Rk-KBF" secondAttribute="bottom" constant="46" id="Fvc-o5-dQf"/>
+                            <constraint firstItem="TWw-Rk-KBF" firstAttribute="centerX" secondItem="80b-br-bhW" secondAttribute="centerX" constant="-8" id="Ltp-ae-rZa"/>
+                            <constraint firstItem="TWw-Rk-KBF" firstAttribute="top" secondItem="qx2-4g-9Hi" secondAttribute="bottom" constant="60" id="X6j-z0-Ac0"/>
+                            <constraint firstItem="VEW-8g-fnn" firstAttribute="centerX" secondItem="80b-br-bhW" secondAttribute="centerX" id="XWh-nG-JL3"/>
+                            <constraint firstItem="TWw-Rk-KBF" firstAttribute="centerY" secondItem="80b-br-bhW" secondAttribute="centerY" constant="15" id="aQS-EK-fPc"/>
+                            <constraint firstItem="qx2-4g-9Hi" firstAttribute="centerX" secondItem="80b-br-bhW" secondAttribute="centerX" id="tfO-3A-14Z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="qx2-4g-9Hi" id="ydb-Nv-PpR"/>
+                        <outlet property="progressBar" destination="TWw-Rk-KBF" id="pIa-d2-ZuW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ids-nq-b9I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92.753623188405811" y="31.473214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
