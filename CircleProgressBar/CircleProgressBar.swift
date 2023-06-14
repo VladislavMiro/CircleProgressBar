@@ -20,46 +20,37 @@ final class CircleProgressBar: UIView {
                                               CGColor(red: 7/255, green: 3/255, blue: 255/255, alpha: 1.0)
                                               ]
     
-    private var backgroundLayer: CAShapeLayer! {
-        didSet {
-            backgroundLayer.backgroundColor = backgroundColor?.cgColor
-            backgroundLayer.strokeColor = unfilledColor.cgColor
-            backgroundLayer.fillColor = UIColor.clear.cgColor
-            backgroundLayer.lineCap = .round
-            backgroundLayer.lineWidth = widthProgress
-        }
-    }
+    private var backgroundLayer: CAShapeLayer = CAShapeLayer()
+    private var fillLayer: CAShapeLayer = CAShapeLayer()
     
-    private var fillLayer: CAShapeLayer! {
-        didSet {
-            fillLayer.strokeColor = UIColor.systemBlue.cgColor
-            fillLayer.fillColor = nil
-            fillLayer.lineCap = .round
-            fillLayer.lineWidth = widthProgress
-            fillLayer.strokeStart = startValue
-            fillLayer.strokeEnd = endValue / 100
-        }
-    }
+    private var labelLayer: CATextLayer = CATextLayer()
     
-    private var labelLayer: CATextLayer! {
-        didSet {
-            labelLayer.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
-            labelLayer.bounds = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height / 2.5)
-            labelLayer.fontSize = self.bounds.height / 4
-            labelLayer.alignmentMode = .center
-            labelLayer.foregroundColor = nil
-        }
-    }
-    
-    override func draw(_ rect: CGRect) {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         configureBackgroundLayer()
         confugureFillLayer()
         configureLabelLayer()
         configureGradient()
     }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        configureBackgroundLayer()
+        confugureFillLayer()
+        configureLabelLayer()
+        configureGradient()
+    }
+    override func draw(_ rect: CGRect) {
+        
+    }
+    
     private func configureBackgroundLayer() {
-        backgroundLayer = CAShapeLayer()
+        backgroundLayer.backgroundColor = backgroundColor?.cgColor
+        backgroundLayer.strokeColor = unfilledColor.cgColor
+        backgroundLayer.fillColor = UIColor.clear.cgColor
+        backgroundLayer.lineCap = .round
+        backgroundLayer.lineWidth = widthProgress
+        
         let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let path = UIBezierPath(arcCenter: center,
                                 radius: (self.layer.bounds.height - 10) / 2.0,
@@ -73,7 +64,13 @@ final class CircleProgressBar: UIView {
     }
     
     private func confugureFillLayer() {
-        fillLayer = CAShapeLayer()
+        fillLayer.strokeColor = UIColor.systemBlue.cgColor
+        fillLayer.fillColor = nil
+        fillLayer.lineCap = .round
+        fillLayer.lineWidth = widthProgress
+        fillLayer.strokeStart = startValue
+        fillLayer.strokeEnd = endValue / 100
+        
         let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let path = UIBezierPath(arcCenter: center,
                                 radius: (self.bounds.height - 10) / 2.0,
@@ -86,8 +83,13 @@ final class CircleProgressBar: UIView {
     }
     
     private func configureLabelLayer() {
-        labelLayer = CATextLayer()
+        labelLayer.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        labelLayer.bounds = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height / 2.5)
+        labelLayer.fontSize = self.bounds.height / 4
+        labelLayer.alignmentMode = .center
+        labelLayer.foregroundColor = nil
         labelLayer.string = "0 %"
+        
         self.layer.addSublayer(labelLayer)
     }
     
